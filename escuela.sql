@@ -1,7 +1,10 @@
+---- se crea base de datos escuela---
 create database escuela
 
+---se usa base de datos escuela---
 use escuela
 
+--- se crea la tabla carrera con clave primaria---
 create table carrera(
 
 Clave_c int identity ,
@@ -12,10 +15,10 @@ durac_c float not null,
 
 constraint pk_cc primary key (clave_c))
 
-insert into carrera values ('ingenieria informatica', 5)
-insert into carrera values ('artes', 4.5)
+insert into carrera values ('ingenieria sistemas', 5) --- se insertan datos a la tabla carrera---
+insert into carrera values ('lenguas extranjeras', 4.5)
 
-select * from carrera
+select * from carrera --- selecciona la tabla carrera y muestra todos sus datos---
 
 
 
@@ -29,8 +32,8 @@ cred_m float not null,
 
 constraint pk_cm primary key (clave_m))
 
-insert into materia values ('java', 10)
-insert into materia values ('artes palsticas', 10)
+insert into materia values ('trigonometria', 10)
+insert into materia values ('ingles', 10)
 
 select * from materia
 
@@ -46,13 +49,13 @@ hor_p datetime null,
 
 constraint pk_cp primary key (Clave_p))
 
-insert into profesor values ('alejandro', 'cra 65 # 45-85', 3256871, 0)
-insert into profesor values ('juan', 'calle 78 # 236-8', 3569875, 2)
+insert into profesor values ('liseth', 'cra 65 # 35-37', 3256871, 0)
+insert into profesor values ('juan', 'calle 59 # 23-80', 3569875, 2)
 
 select * from profesor
 
 
--------Tabla alumno con clave foranea
+-------Tabla alumno con clave foranea------
 
 create table alumno(
 
@@ -70,12 +73,12 @@ clave_c1 int ,
 
 constraint pk_calu primary key (mat_alu), constraint fk_fc1 foreign key (clave_c1) references carrera(clave_c))
 
-insert into alumno values ('alejandro', '28', 5, 'masculino', 1)
-insert into alumno values ('luisa', '20', 3, 'femenino', 2)
+insert into alumno values ('valeria', '35', 5, 'femenino', 1)
+insert into alumno values ('luis', '22', 3, 'masculino', 2)
 
 select * from alumno
 
-------tablas intermedias alumno-profesor
+------tabla intermedia alumno-profesor-----
 
 create table alu_pro(
 
@@ -92,7 +95,7 @@ insert into alu_pro values (1, 1)
 
 select * from alu_pro
 
--------tabla intermedia materia-alumno
+-------tabla intermedia materia-alumno----
 
 create table mat_alu(
 
@@ -104,7 +107,7 @@ constraint fk_fm1 foreign key (clave_m1) references materia (clave_m),
 
 constraint fk_falu2 foreign key (mat_alu2) references alumno(mat_alu) )
 
-------------tabla intermedia materia profesor
+------------tabla intermedia materia profesor----
 
 create table mat_pro(
 
